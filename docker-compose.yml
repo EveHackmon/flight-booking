@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ./backend
+    image: gcr.io/devops-workshop-462511/flights-backend
+    ports:
+      - '8080:8080'
+    environment:
+      - DATABASE_URL=postgres://user:pass@db:5432/flight_booking
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: flight_booking
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  pgdata:

@@ -1,0 +1,41 @@
+{
+  "name": "flights-service",
+  "version": "1.0.0",
+  "description": "flights service",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "mocha tests/*.spec.js",
+    "lint": "eslint src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://https://github.com/IMrMoon/DevOps-Project.git"
+  },
+  "type": "module",
+  "author": "Products team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://githttps://github.com/IMrMoon/DevOps-Project/issues"
+  },
+  "homepage": "https://https://github.com/IMrMoon/DevOps-Project#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "chai-http": "^5.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "eslint": "^8.35.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.1.9",
+    "sequelize-cli": "^6.6.2",
+    "supertest": "^6.3.3"
+  }
+}
