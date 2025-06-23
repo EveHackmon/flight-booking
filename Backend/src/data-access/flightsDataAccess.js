@@ -2,6 +2,7 @@
 import { sequelize } from './db.js';
 import './flightsModel.js';
 import './ordersModel.js';
+import { seedDb } from './seed.js';
 
 export async function initDb(retries = 10, delay = 2000) {
   while (retries > 0) {
@@ -9,6 +10,7 @@ export async function initDb(retries = 10, delay = 2000) {
       await sequelize.authenticate();
       console.log('✅ Connected to DB');
       await sequelize.sync({ alter: true });
+      await seedDb();
       return;
     } catch (err) {
       console.error('❌ DB connection failed:', err.message);
