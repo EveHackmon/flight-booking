@@ -27,6 +27,22 @@ export async function seedDb() {
       arrival_date: new Date('2025-07-03T16:00:00Z'),
       price: 1100.0,
     },
+    {
+      company: 'British Airways',
+      origin: 'London',
+      destination: 'Tel Aviv',
+      departure_date: new Date('2025-08-03T10:00:00Z'),
+      arrival_date: new Date('2025-08-03T16:00:00Z'),
+      price: 1100.0,
+    },
+    {
+      company: 'British Airways',
+      origin: 'London',
+      destination: 'Tel Aviv',
+      departure_date: new Date('2025-09-03T10:00:00Z'),
+      arrival_date: new Date('2025-09-03T16:00:00Z'),
+      price: 1100.0,
+    },
   ]);
 
   console.log('✅ Seeded flights data');
