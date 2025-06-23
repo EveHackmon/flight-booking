@@ -60,30 +60,30 @@ jobs:
           POSTGRES_URI: postgres://postgres:pass@localhost:5432/flight_booking
 
   deploy-to-cloud-run:
-  needs: build-and-test
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-        project_id: devops-workshop-462511
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: devops-workshop-462511
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
 
-    - name: Build and push Docker image
-      run: |
-        gcloud auth configure-docker
-        docker build -t gcr.io/devops-workshop-462511/gcr.io/flights-backend Backend/
-        docker push gcr.io/devops-workshop-462511/gcr.io/flights-backend
+      - name: Build and push Docker image
+        run: |
+          gcloud auth configure-docker
+          docker build -t gcr.io/devops-workshop-462511/gcr.io/flights-backend Backend/
+          docker push gcr.io/devops-workshop-462511/gcr.io/flights-backend
 
-    - name: Deploy to Cloud Run
-      run: |
-        gcloud run deploy flights-backend \
-          --image gcr.io/devops-workshop-462511/gcr.io/devops-workshop-462511/flights-backend \
-          --platform managed \
-          --region us-central1 \
-          --allow-unauthenticated \
-          --set-env-vars "DATABASE_URL=${{ secrets.DATABASE_URL }}"
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy flights-backend \
+            --image gcr.io/devops-workshop-462511/gcr.io/devops-workshop-462511/flights-backend \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated \
+            --set-env-vars "DATABASE_URL=${{ secrets.DATABASE_URL }}"
