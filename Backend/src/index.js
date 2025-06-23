@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 
 app.use(json());
-app.use('/flights', flightsRoutes);
 
+app.use('/flights', flightsRoutes);
 app.use('/orders', ordersRoutes);
 
 // Initialize the database connection
