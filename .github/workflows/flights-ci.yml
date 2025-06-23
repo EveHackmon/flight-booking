@@ -38,6 +38,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Create .env file
+        run: |
+          cd Backend
+          echo "DATABASE_URL=postgres://postgres:pass@localhost:5432/flight_booking" > .env
+
       - name: Install dependencies
         run: |
           cd Backend
@@ -52,12 +57,6 @@ jobs:
         run: |
           cd Backend
           npm test
-        env:
-          DB_NAME: flight_booking
-          DB_USER: postgres
-          DB_PASS: pass
-          DB_HOST: 35.232.83.157
-          POSTGRES_URI: postgres://postgres:pass@35.232.83.157:5432/flight_booking
 
   deploy-to-cloud-run:
     needs: build-and-test
