@@ -1,20 +1,20 @@
-# קח image בסיסי של Node.js
+# Use a base Node.js image
 FROM node:18
 
-# צור תקייה באפליקציה
+# Set the working directory inside the container
 WORKDIR /app
 
-# העתק קבצי תלויות
+# Copy dependency files
 COPY package*.json ./
 
-# התקנת הספריות
+# Install dependencies
 RUN npm install
 
-# העתק שאר קבצי הפרויקט
+# Copy the rest of the application code
 COPY . .
 
-# פתח את הפורט שהשרת עובד עליו
+# Expose the port the server listens on
 EXPOSE 8080
 
-# הפעלת השרת
+# Start the server
 CMD ["npm", "start"]
