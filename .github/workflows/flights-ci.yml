@@ -57,7 +57,7 @@ jobs:
           DB_USER: postgres
           DB_PASS: pass
           DB_HOST: postgres
-          POSTGRES_URI: postgres://postgres:pass@localhost:5432/flight_booking
+          POSTGRES_URI: postgres://postgres:pass@postgres:5432/flight_booking
 
   deploy-to-cloud-run:
     needs: build-and-test
