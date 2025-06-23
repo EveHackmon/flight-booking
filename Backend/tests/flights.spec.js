@@ -21,7 +21,6 @@ describe('Flight Test', () => {
   });
 
   it('should read a flight', async () => {
-    // === 1. Read ===
     const readRes = await request(app)
       .get(`/flights/read-flight/${flightId}`)
       .expect(200);
