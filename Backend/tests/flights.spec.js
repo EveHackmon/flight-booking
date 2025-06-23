@@ -12,12 +12,12 @@ describe('Flight Test', () => {
   const flightId = 1;
 
   before(async function () {
-    this.timeout(100000);
+    this.timeout(10000);
     server = await startTestServer();
   });
 
-  after(async () => {
-    server.close();
+  after(() => {
+    server?.close();
   });
 
   it('should read a flight', async () => {
