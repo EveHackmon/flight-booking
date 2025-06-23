@@ -76,13 +76,13 @@ jobs:
       - name: Build and push Docker image
         run: |
           gcloud auth configure-docker
-          docker build -t gcr.io/devops-workshop-462511/gcr.io/flights-backend Backend/
-          docker push gcr.io/devops-workshop-462511/gcr.io/flights-backend
+          docker build -t gcr.io/devops-workshop-462511/flights-backend Backend/
+          docker push gcr.io/devops-workshop-462511/flights-backend
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy flights-backend \
-            --image gcr.io/devops-workshop-462511/gcr.io/devops-workshop-462511/flights-backend \
+            --image gcr.io/devops-workshop-462511/devops-workshop-462511/flights-backend \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
