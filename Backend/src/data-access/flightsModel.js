@@ -34,6 +34,11 @@ export const Flights = sequelize.define(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
+    seats_available: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0, // נניח כברירת מחדל אין מושבים פנויים
+    },
   },
 
   {

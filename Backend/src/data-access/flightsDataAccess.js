@@ -10,7 +10,12 @@ export async function initDb(retries = 10, delay = 2000) {
       await sequelize.authenticate();
       console.log('✅ Connected to DB');
       await sequelize.sync({ alter: true });
-      await seedDb();
+
+      // הוספת תנאי כדי לא להריץ seed בטסטים
+      if (process.env.NODE_ENV !== 'test') {
+        await seedDb();
+      }
+
       return;
     } catch (err) {
       console.error('❌ DB connection failed:', err.message);
@@ -25,3 +30,4 @@ export async function initDb(retries = 10, delay = 2000) {
     '❌ Could not connect to the database after multiple attempts'
   );
 }
+

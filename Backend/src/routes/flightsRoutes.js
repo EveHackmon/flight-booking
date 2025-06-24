@@ -2,12 +2,12 @@
 import { Router } from 'express';
 import {
   readFlightByFlightNum,
-  readAllFlights,
+  searchFlights,
 } from '../controllers/flightsController.js';
 
 const router = Router();
 
 router.get('/read-flight/:flightId', readFlightByFlightNum);
-router.get('/read-all-flights', readAllFlights);
+router.get('/search-flights', searchFlights);
 
 export default router;
